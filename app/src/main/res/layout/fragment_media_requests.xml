@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFEB3B"
-    tools:context="ui.MediaRequestFragment">
+    tools:context="ui.MediaRequestsFragment">
 
     <TextView
         android:id="@+id/txtView_mediaRequest"
@@ -30,5 +30,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtView_mediaRequest" />
+
+    <ImageView
+        android:id="@+id/btnListDownloading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="16dp"
+        android:src="@android:drawable/ic_menu_more"
+        app:layout_constraintStart_toEndOf="@+id/txtView_mediaRequest"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

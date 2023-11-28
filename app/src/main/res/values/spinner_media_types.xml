@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="planets_array">
-        <item>Manual</item>
-        <item>Automatic</item>
+    <string-array name="media_types_array">
+        <item>manual</item>
+        <item>automatic</item>
     </string-array>
 </resources>

@@ -16,25 +16,32 @@
         <action
             android:id="@+id/action_nav_home_to_watchListFragment"
             app:destination="@id/watchListFragment" />
+        <action
+            android:id="@+id/action_nav_home_to_addRequestFragment"
+            app:destination="@id/addRequestFragment" />
     </fragment>
     <fragment
         android:id="@+id/mediaRequestFragment"
-        android:name="com.local.mypi.ui.MediaRequestFragment"
+        android:name="com.local.mypi.ui.MediaRequestsFragment"
         android:label="fragment_media_request"
-        tools:layout="@layout/fragment_media_request" >
-        <action
-            android:id="@+id/action_mediaRequestFragment_to_mediaRequestFragmentDetails"
-            app:destination="@id/mediaRequestFragmentDetails" />
-    </fragment>
+        tools:layout="@layout/fragment_media_requests" />
     <fragment
-        android:id="@+id/watchListFragment"
-        android:name="com.local.mypi.ui.WatchListFragment"
-        android:label="fragment_watch_list"
-        tools:layout="@layout/fragment_watch_list" />
+        android:id="@+id/addRequestFragment"
+        android:name="com.local.mypi.ui.AddRequestFragment"
+        android:label="fragment_add_request"
+        tools:layout="@layout/fragment_add_request" >
+        <action
+            android:id="@+id/action_addRequestFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
     <fragment
         android:id="@+id/mediaRequestFragmentDetails"
         android:name="com.local.mypi.ui.MediaRequestFragmentDetails"
         android:label="fragment_media_request_details"
         tools:layout="@layout/fragment_media_request_details" />
+    <fragment
+        android:id="@+id/watchListFragment"
+        android:name="com.local.mypi.ui.WatchListFragment"
+        android:label="fragment_watch_list" />
 
 </navigation>

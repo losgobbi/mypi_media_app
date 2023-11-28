@@ -17,9 +17,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
-        binding.btnWatchList.setOnClickListener {
+        binding.btnAddReq.setOnClickListener {
             val action =
-                HomeFragmentDirections.actionNavHomeToWatchListFragment()
+                HomeFragmentDirections.actionNavHomeToAddRequestFragment()
             findNavController().navigate(action)
         }
 
@@ -29,6 +29,11 @@ class HomeFragment : Fragment() {
             findNavController().navigate(action)
         }
 
+        binding.btnWatchList.setOnClickListener {
+            val action =
+                HomeFragmentDirections.actionNavHomeToWatchListFragment()
+            findNavController().navigate(action)
+        }
         return binding.root
     }
 }

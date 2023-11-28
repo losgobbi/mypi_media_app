@@ -17,7 +17,7 @@
         app:cardMaxElevation="10dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
-        app:layout_constraintBottom_toTopOf="@+id/btnWatchList"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddReq"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,11 +45,11 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/btnWatchList"
+        android:id="@+id/btnAddReq"
         android:layout_width="match_parent"
         android:layout_height="52dp"
         android:backgroundTint="@color/white"
-        android:text="My Watch list"
+        android:text="Add Request"
         android:textColor="?attr/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +65,20 @@
         android:textColor="?attr/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnWatchList" />
+        app:layout_constraintTop_toBottomOf="@+id/btnAddReq" />
+
+    <Button
+        android:id="@+id/btnWatchList"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/white"
+        android:text="My Watch List"
+        android:textColor="?attr/colorPrimaryDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMediaReq" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

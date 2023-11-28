@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
@@ -16,10 +17,10 @@
             android:layout_height="100dp"
             android:layout_gravity="center_vertical"
             android:layout_marginStart="25dp"
+            android:src="@drawable/logo_pop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/logo_pop" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txtView_media_item_name"
@@ -54,11 +55,25 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
             android:layout_marginStart="11dp"
-            android:layout_marginTop="40dp"
-            android:textColor="@android:color/black"
+            android:layout_marginTop="10dp"
             android:text="Status: running (100%)"
+            android:textColor="@android:color/black"
             app:layout_constraintStart_toEndOf="@+id/imageView"
-            app:layout_constraintTop_toBottomOf="@+id/txtView_media_item_name" />
+            app:layout_constraintTop_toBottomOf="@+id/txtView_media_item_type" />
+
+        <TextView
+            android:id="@+id/txtView_media_item_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:layout_marginStart="11dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Error: msg"
+            android:textColor="@android:color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/txtView_media_item_status" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_media_item_start_down"
@@ -66,6 +81,7 @@
             android:layout_height="28dp"
             android:layout_marginEnd="10dp"
             android:background="@drawable/details"
+            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

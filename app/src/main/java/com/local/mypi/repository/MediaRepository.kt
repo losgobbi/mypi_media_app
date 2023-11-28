@@ -1,29 +1,24 @@
 package com.local.mypi.repository
 
-import android.util.Log
-import com.local.mypi.models.DownloadType
 import com.local.mypi.models.MediaFile
-import com.local.mypi.models.MediaType
+import com.local.mypi.services.EventListener
+import com.local.mypi.services.SaasStore
 
-class MediaRepository(var id: String) {
+class MediaRepository(var backend: SaasStore) {
 
-    fun getMedias() : List<MediaFile> {
-        return listOf(
-            MediaFile(
-                "Senhor dos Anéis",
-                media_type = MediaType.MOVIE,
-                download_type = DownloadType.MANUAL),
-            MediaFile(
-                "Matrix",
-                media_type = MediaType.MOVIE,
-                download_type = DownloadType.MANUAL),
-            MediaFile(
-                "Guardiões da Galáxia",
-                media_type = MediaType.MOVIE,
-                download_type = DownloadType.MANUAL))
+    suspend fun getDownloadsRunning() : List<MediaFile> {
+        return backend.getDownloadsRunning()
     }
 
-    fun addMediaRequest() {
+    suspend fun getDownloasFinished() : List<MediaFile> {
+        return backend.getDownloadsFinished()
+    }
 
+    suspend fun addMediaRequest(file: MediaFile) {
+        return backend.addDownloadRequest(file)
+    }
+
+    suspend fun monitorDownloadsRunning(listener: EventListener<List<MediaFile>>) {
+        return backend.monitorDownloadsRunning(listener)
     }
 }
