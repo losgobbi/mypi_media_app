@@ -8,7 +8,7 @@
     tools:context="ui.AddRequestFragment">
 
     <TextView
-        android:id="@+id/txtView_media_name"
+        android:id="@+id/txtView_watch_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -71,8 +71,8 @@
         android:paddingStart="10dp"
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txtView_media_name"
-        app:layout_constraintTop_toBottomOf="@+id/txtView_media_name" />
+        app:layout_constraintStart_toStartOf="@+id/txtView_watch_name"
+        app:layout_constraintTop_toBottomOf="@+id/txtView_watch_name" />
 
     <View
         android:id="@+id/divider"

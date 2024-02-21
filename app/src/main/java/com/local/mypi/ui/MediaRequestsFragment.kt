@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import com.local.mypi.MyApplication
+import com.local.mypi.R
 import com.local.mypi.adapters.MediaRequestAdapter
 import com.local.mypi.databinding.FragmentMediaRequestsBinding
 import com.local.mypi.viewmodels.MediaViewModel
@@ -33,6 +34,14 @@ class MediaRequestsFragment : Fragment() {
 
         binding.btnListDownloading.setOnClickListener {
             viewModel.changeMediaList()
+            when (viewModel.filterMedia) {
+                MediaViewModel.Companion.FilterMedia.DOWNLOADING -> {
+                    binding.txtViewFilterdesc.text = getString(R.string.filter_finished)
+                }
+                else -> {
+                    binding.txtViewFilterdesc.text = getString(R.string.filter_downloading)
+                }
+            }
         }
 
         return binding.root

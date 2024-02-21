@@ -42,6 +42,19 @@
     <fragment
         android:id="@+id/watchListFragment"
         android:name="com.local.mypi.ui.WatchListFragment"
-        android:label="fragment_watch_list" />
+        android:label="fragment_watch_list" >
+        <action
+            android:id="@+id/action_watchListFragment_to_addWatchListFragment"
+            app:destination="@id/addWatchListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addWatchListFragment"
+        android:name="com.local.mypi.ui.AddWatchListFragment"
+        android:label="fragment_add_watch_list"
+        tools:layout="@layout/fragment_add_watchlist" >
+        <action
+            android:id="@+id/action_addWatchListFragment_to_watchListFragment"
+            app:destination="@id/watchListFragment" />
+    </fragment>
 
 </navigation>

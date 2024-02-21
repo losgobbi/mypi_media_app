@@ -3,11 +3,14 @@ package com.local.mypi.viewmodels
 import android.util.Log
 import androidx.lifecycle.*
 import com.local.mypi.models.MediaFile
+import com.local.mypi.models.WatchListItem
 import com.local.mypi.repository.MediaRepository
 import com.local.mypi.services.EventListener
 import kotlinx.coroutines.launch
 
 class MediaViewModel(private val mediaRepo: MediaRepository) : ViewModel() {
+
+    val watchList: LiveData<List<WatchListItem>> = mediaRepo.watchList.asLiveData()
 
     init {
         Log.d("MediaViewModel", "viewmodel created!!!")
@@ -21,29 +24,37 @@ class MediaViewModel(private val mediaRepo: MediaRepository) : ViewModel() {
     }
 
     private var _monitoredDownloads = MutableLiveData<List<MediaFile>>()
-    private var _filterMedia : FilterMedia = FilterMedia.DOWNLOADING
+    var filterMedia : FilterMedia = FilterMedia.DOWNLOADING
 
     fun changeMediaList() {
 
-        when (_filterMedia) {
+        when (filterMedia) {
             FilterMedia.DOWNLOADING -> {
+                filterMedia = FilterMedia.FINISHED
                 viewModelScope.launch {
                     //medias.value = mediaRepo.getDownloadsRunning()
                     medias.value = _monitoredDownloads.value
                 }
-                _filterMedia = FilterMedia.FINISHED
             }
             FilterMedia.FINISHED -> {
+                filterMedia = FilterMedia.DOWNLOADING
                 viewModelScope.launch {
                     medias.value = mediaRepo.getDownloasFinished()
                 }
-                _filterMedia = FilterMedia.DOWNLOADING
             }
         }
     }
 
     suspend fun addMedia(file: MediaFile) {
         mediaRepo.addMediaRequest(file)
+    }
+
+    suspend fun addWatchListItem(item: WatchListItem) {
+        mediaRepo.addWatchListItem(item)
+    }
+
+    suspend fun deleteWatchListItem(item: WatchListItem) {
+        mediaRepo.deleteWatchListItem(item)
     }
 
     private suspend fun monitorDownloadsRunning() {

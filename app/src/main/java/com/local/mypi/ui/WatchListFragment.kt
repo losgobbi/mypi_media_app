@@ -1,17 +1,22 @@
 package com.local.mypi.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.local.mypi.MyApplication
-import com.local.mypi.adapters.MediaRequestAdapter
-import com.local.mypi.databinding.FragmentMediaRequestsBinding
+import com.local.mypi.adapters.WatchListItemAdapter
 import com.local.mypi.databinding.FragmentWatchListBinding
+import com.local.mypi.models.WatchListItem
 import com.local.mypi.viewmodels.MediaViewModel
+import kotlinx.coroutines.launch
 
 class WatchListFragment : Fragment() {
 
@@ -27,12 +32,22 @@ class WatchListFragment : Fragment() {
             MediaViewModel.Factory((activity!!.application as MyApplication).getMediaRepository())
         }
 
-        /*viewModel.medias.observe(viewLifecycleOwner) {
-            recyclerView.adapter = MediaRequestAdapter(viewModel.medias.value!!)
-        }*/
+        val adapter = WatchListItemAdapter {
+            lifecycleScope.launch {
+                viewModel.deleteWatchListItem(it)
+            }
+        }
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        viewModel.watchList.observe(viewLifecycleOwner) { watchItem ->
+            watchItem?.let { adapter.submitList(it) }
+        }
 
         binding.btnAddWatchItem.setOnClickListener {
-            //viewModel.changeMediaList()
+            val action =
+                WatchListFragmentDirections.actionWatchListFragmentToAddWatchListFragment()
+            findNavController().navigate(action)
         }
 
         return binding.root

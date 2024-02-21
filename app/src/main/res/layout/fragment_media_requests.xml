@@ -11,7 +11,7 @@
         android:id="@+id/txtView_mediaRequest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:gravity="center_vertical"
         android:text="Media Requests"
         android:textColor="@android:color/black"
@@ -24,12 +24,11 @@
         android:id="@+id/media_request_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:paddingBottom="60dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtView_mediaRequest" />
+        app:layout_constraintTop_toBottomOf="@+id/txtView_filterdesc" />
 
     <ImageView
         android:id="@+id/btnListDownloading"
@@ -40,5 +39,15 @@
         android:src="@android:drawable/ic_menu_more"
         app:layout_constraintStart_toEndOf="@+id/txtView_mediaRequest"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtView_filterdesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/filter_finished"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtView_mediaRequest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
